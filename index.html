@@ -1,224 +1,281 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BankSignal</title>
-  <meta name="description" content="BankSignal is coming soon.">
-  <style>
-    :root {
-      --bg: #f8f9fa;
-      --panel: #ffffff;
-      --border: #c8ccd1;
-      --text: #202122;
-      --muted: #54595d;
-      --link: #3366cc;
-      --link-hover: #1a4fb3;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BankSignal ‚Äî U.S. Banking & Credit Union Intelligence</title>
+    <meta name="description" content="Executive intelligence platform for U.S. banks and credit unions. Financial metrics, regulatory signals, and curated industry briefings.">
+    <style>
+        :root {
+            --bg: #fafafa;
+            --panel: #ffffff;
+            --border: #e2e4e8;
+            --border-light: #eef0f3;
+            --text: #1a1d21;
+            --muted: #5c6370;
+            --accent: #1e3a5f;
+            --accent-light: #2a5a8f;
+            --gold: #c49a3c;
+            --gold-muted: rgba(196, 154, 60, 0.08);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    * {
-      box-sizing: border-box;
-    }
+        /* Header */
+        .header {
+            background: var(--accent);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .header svg {
+            width: 22px;
+            height: 22px;
+            opacity: 0.9;
+        }
+        .header span {
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
 
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      line-height: 1.6;
-    }
+        /* Page */
+        .page {
+            max-width: 840px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .content {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 36px 40px 44px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
 
-    .topbar {
-      background: var(--panel);
-      border-bottom: 1px solid var(--border);
-      padding: 14px 24px;
-      font-size: 14px;
-      color: var(--muted);
-    }
+        /* Title */
+        h1 {
+            font-size: 1.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 6px;
+            letter-spacing: -0.3px;
+        }
+        .tagline {
+            font-size: 1.05rem;
+            color: var(--muted);
+            margin-bottom: 28px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-light);
+        }
 
-    .page {
-      max-width: 980px;
-      margin: 32px auto;
-      padding: 0 20px;
-    }
+        /* Notice */
+        .notice {
+            background: var(--gold-muted);
+            border-left: 3px solid var(--gold);
+            padding: 14px 18px;
+            margin-bottom: 28px;
+            font-size: 0.92rem;
+            color: var(--text);
+            border-radius: 0 3px 3px 0;
+        }
+        .notice strong {
+            color: var(--accent);
+        }
 
-    .content {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      padding: 28px 32px 36px;
-    }
+        /* Sections */
+        h2 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 30px;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border-light);
+        }
+        p {
+            margin-bottom: 14px;
+            font-size: 0.95rem;
+            color: #2c3038;
+        }
 
-    h1 {
-      margin: 0 0 8px;
-      font-size: 2rem;
-      font-weight: 400;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 12px;
-    }
+        /* Feature grid */
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 16px 0 20px;
+        }
+        .feature {
+            padding: 16px 18px;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            background: #fcfcfd;
+        }
+        .feature-title {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        .feature-desc {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.55;
+            margin: 0;
+        }
 
-    .subtitle {
-      margin: 0 0 24px;
-      color: var(--muted);
-      font-size: 0.98rem;
-    }
+        /* Source list */
+        .sources {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 12px 0 20px;
+        }
+        .source-tag {
+            font-size: 0.78rem;
+            color: var(--muted);
+            background: #f3f4f6;
+            border: 1px solid var(--border-light);
+            border-radius: 3px;
+            padding: 4px 10px;
+            white-space: nowrap;
+        }
 
-    .notice {
-      background: #f8f9fa;
-      border: 1px solid var(--border);
-      padding: 14px 16px;
-      margin: 0 0 24px;
-      font-size: 0.96rem;
-    }
+        /* Links */
+        a {
+            color: var(--accent-light);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+        a:hover {
+            border-bottom-color: var(--accent-light);
+        }
 
-    h2 {
-      margin-top: 28px;
-      margin-bottom: 10px;
-      font-size: 1.25rem;
-      font-weight: 500;
-      border-bottom: 1px solid #eaecf0;
-      padding-bottom: 6px;
-    }
+        /* Footer */
+        .footer {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-light);
+            font-size: 0.82rem;
+            color: var(--muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    p {
-      margin: 0 0 14px;
-    }
-
-    ul {
-      margin: 0 0 16px 22px;
-      padding: 0;
-    }
-
-    li {
-      margin-bottom: 8px;
-    }
-
-    a {
-      color: var(--link);
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: var(--link-hover);
-      text-decoration: underline;
-    }
-
-    .infobox {
-      float: right;
-      width: 280px;
-      margin: 0 0 20px 24px;
-      border: 1px solid var(--border);
-      background: #f8f9fa;
-      font-size: 0.95rem;
-    }
-
-    .infobox-title {
-      background: #eaecf0;
-      border-bottom: 1px solid var(--border);
-      padding: 10px 12px;
-      font-weight: 600;
-      text-align: center;
-    }
-
-    .infobox table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .infobox td {
-      padding: 8px 12px;
-      vertical-align: top;
-      border-top: 1px solid #eaecf0;
-    }
-
-    .infobox td:first-child {
-      width: 38%;
-      font-weight: 600;
-    }
-
-    .footer {
-      margin-top: 24px;
-      font-size: 0.88rem;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-      padding-top: 14px;
-    }
-
-    @media (max-width: 760px) {
-      .infobox {
-        float: none;
-        width: 100%;
-        margin: 0 0 20px;
-      }
-
-      .content {
-        padding: 22px 18px 28px;
-      }
-
-      h1 {
-        font-size: 1.75rem;
-      }
-    }
-  </style>
+        /* Responsive */
+        @media (max-width: 640px) {
+            .content { padding: 26px 22px 32px; }
+            h1 { font-size: 1.5rem; }
+            .features { grid-template-columns: 1fr; }
+            .footer { flex-direction: column; gap: 6px; align-items: flex-start; }
+        }
+    </style>
 </head>
 <body>
-  <div class="topbar">
-    BankSignal
-  </div>
-
-  <div class="page">
-    <div class="content">
-      <aside class="infobox">
-        <div class="infobox-title">BankSignal</div>
-        <table>
-          <tr>
-            <td>Status</td>
-            <td>In development</td>
-          </tr>
-          <tr>
-            <td>Focus</td>
-            <td>Banking and fintech intelligence</td>
-          </tr>
-          <tr>
-            <td>Coverage</td>
-            <td>U.S. banking and credit union industry</td>
-          </tr>
-          <tr>
-            <td>Access</td>
-            <td>Coming soon</td>
-          </tr>
-        </table>
-      </aside>
-
-      <h1>BankSignal</h1>
-      <p class="subtitle">A developing platform for banking and fintech news, signals, and market intelligence.</p>
-
-      <div class="notice">
-        <strong>Notice:</strong> This site is currently under construction.
-      </div>
-
-      <h2>Overview</h2>
-      <p>
-        BankSignal is being developed as a focused source for news and signals relevant to the U.S. banking and fintech landscape.
-        The goal is to provide a more useful, structured view of important developments across the industry.
-      </p>
-
-      <h2>Planned coverage</h2>
-      <ul>
-        <li>Banking technology and digital banking developments</li>
-        <li>Payments, lending, compliance, and operational trends</li>
-        <li>Bank and credit union announcements, earnings, and mergers</li>
-        <li>Curated headline groupings and signal-oriented summaries</li>
-      </ul>
-
-      <h2>Current status</h2>
-      <p>
-        The root domain is currently serving as a placeholder while the broader BankSignal experience is being built out.
-      </p>
-
-      <div class="footer">
-        Last updated: Initial placeholder page
-      </div>
+    <div class="header">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+            <polyline points="16 7 22 7 22 13"></polyline>
+        </svg>
+        <span>BankSignal</span>
     </div>
-  </div>
+
+    <div class="page">
+        <div class="content">
+            <h1>BankSignal</h1>
+            <p class="tagline">Executive intelligence platform for U.S. banks and credit unions.</p>
+
+            <div class="notice">
+                BankSignal is a private platform in active development. Access is by invitation only.
+            </div>
+
+            <h2>What is BankSignal?</h2>
+            <p>
+                BankSignal is a SaaS platform that brings together regulatory filings, financial performance data,
+                and curated industry news into a single, focused view for banking professionals. It tracks
+                every FDIC-insured bank and NCUA-chartered credit union in the United States.
+            </p>
+            <p>
+                Rather than assembling spreadsheets from multiple government sources, BankSignal normalizes
+                quarterly Call Report data and computes the metrics that matter ‚Äî efficiency ratios, asset quality
+                indicators, capital adequacy, deposit and loan growth ‚Äî so you can focus on analysis, not data wrangling.
+            </p>
+
+            <h2>Capabilities</h2>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-title">Institution Explorer</div>
+                    <p class="feature-desc">Browse and compare 5,000+ financial institutions with sortable metrics, holding company grouping, and custom tagging.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-title">Financial Intelligence</div>
+                    <p class="feature-desc">24-metric audit reports with full calculation transparency. TTM income, growth rates, asset quality, and capital ratios.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-title">Daily Briefing</div>
+                    <p class="feature-desc">Curated headlines from regulators, trade publications, and regional sources ‚Äî filtered to banking and fintech relevance.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-title">Registry Monitoring</div>
+                    <p class="feature-desc">Automated detection of new charters, name changes, mergers, and deactivations across both FDIC and NCUA registries.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-title">Publicly Traded Mapping</div>
+                    <p class="feature-desc">SEC-sourced stock exchange and ticker data linked to FDIC institutions, with direct connections to market data.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-title">Personal Watchlist</div>
+                    <p class="feature-desc">Track the institutions that matter to you. Per-user, private, and fully integrated with all Explorer capabilities.</p>
+                </div>
+            </div>
+
+            <h2>Data sources</h2>
+            <p>BankSignal ingests and normalizes data from authoritative regulatory sources on a quarterly cycle:</p>
+            <div class="sources">
+                <span class="source-tag">FDIC Call Reports</span>
+                <span class="source-tag">NCUA 5300 Reports</span>
+                <span class="source-tag">SEC EDGAR</span>
+                <span class="source-tag">FFIEC NIC</span>
+                <span class="source-tag">OCC</span>
+                <span class="source-tag">CFPB</span>
+                <span class="source-tag">Federal Reserve</span>
+            </div>
+
+            <h2>Built for banking professionals</h2>
+            <p>
+                BankSignal is designed for executives and advisors who work with U.S. depository institutions.
+                Whether you are benchmarking peer performance, monitoring a competitive landscape, or staying current
+                on regulatory developments, the platform provides a structured, no-noise alternative to manual research.
+            </p>
+
+            <h2>How it was built</h2>
+            <p>
+                BankSignal started as a personal project to test what is possible when a non-developer
+                partners with <a href="https://claude.ai">Claude</a>, Anthropic's AI assistant. Every aspect of the
+                platform ‚Äî from regulatory data research and database schema design to the full-stack application,
+                Azure cloud infrastructure, CI/CD pipelines, and automated GitHub Actions workflows ‚Äî was
+                designed, planned, and built through conversation with Claude Code.
+            </p>
+            <p>
+                No templates. No boilerplate. Just iterative collaboration between a domain expert and an AI
+                that can reason about architecture, write production code, and debug deployment issues in real time.
+            </p>
+
+            <div class="footer">
+                <span>&copy; 2026 BankSignal</span>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
